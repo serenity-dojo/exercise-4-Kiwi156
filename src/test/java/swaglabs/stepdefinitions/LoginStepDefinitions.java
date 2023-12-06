@@ -1,10 +1,12 @@
 package swaglabs.stepdefinitions;
 
+import net.serenitybdd.annotations.Step;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.thucydides.core.annotations.Steps;
+
+import net.serenitybdd.annotations.Steps;
 import swaglabs.actions.catalog.CatalogItems;
 import swaglabs.actions.login.LoginActions;
 import swaglabs.model.UserCredentials;

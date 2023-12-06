@@ -1,7 +1,9 @@
 package swaglabs.actions.login;
 
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.core.steps.UIInteractionSteps;
-import net.thucydides.core.annotations.Step;
+
+
 
 public class LoginActions extends UIInteractionSteps {
     @Step
