@@ -58,11 +58,14 @@ public class LoginStepDefinitions {
 
     @When("Colin/he attempts to login with the following credentials:")
     public void attemptsToLoginWithTheFollowingCredentials(UserCredentials userCredentials) {
-        // TODO: Implement me
+        login.withCredentials(userCredentials.username(),userCredentials.password());
     }
+
 
     @Then("Colin/he should be presented with the error message {}")
     public void heShouldBePresentedWithTheErrorMessageMessage(String errorMessage) {
-        // TODO: Implement me
+        assertThat(login.errorMessage()).contains(errorMessage);
     }
+
 }
+
