@@ -7,19 +7,38 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.annotations.Steps;
+import net.serenitybdd.core.steps.UIInteractions;
+import swaglabs.actions.catalog.CatalogItems;
+import swaglabs.actions.catalog.InventoryActions;
+
 import swaglabs.model.CustomerDetails;
 
 import java.util.List;
 import java.util.Map;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class CartStepDefinitions {
+
+public class CartStepDefinitions extends UIInteractions {
+
+    @Steps
+    InventoryActions inventoryActions;
+
+
+    @Steps
+    CatalogItems catalog;
 
     /**
      * Add an item on the catalog page to the cart
      */
-    @When("Colin/he adds {string} to the cart")
-    public void colinAddsToTheCart(String item) {
-        // TODO: Implement me
+
+
+    @When("Colin adds the following items to the cart: {items}")
+    public void colinAddsToTheCart(List<String> items) {
+        for (String item : items) {
+            inventoryActions.addToCart(item);
+            System.out.println("Items" + item);
+        }
     }
 
     @ParameterType(".*")
@@ -27,19 +46,10 @@ public class CartStepDefinitions {
         return Splitter.on(",").trimResults().splitToList(itemList);
     }
 
-    @When("Colin/he adds the following items to the cart: {items}")
-    public void addsItemsToTheCart(List<String> items) {
-        // TODO: Implement me
-    }
-
-    @When("Colin/he adds this item to the cart")
-    public void colinAddsTheCurrentItemTheCart() {
-        // TODO: Implement me
-    }
-
     @Then("the cart item count should be {int}")
     public void theCartItemCountShouldBe(int itemCount) {
-        // TODO: Implement me
+
+        assertThat(catalog.shoppingCartBadge()).contains(Integer.toString(itemCount));
     }
 
     @And("Colin/he has the following item(s) in his/her cart:")
