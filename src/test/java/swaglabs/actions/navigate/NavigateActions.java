@@ -8,4 +8,7 @@ public class NavigateActions extends UIInteractions {
         openUrl("https://www.saucedemo.com/inventory.html");
     }
 
+    public void toTheShoppingCart() {
+        find(".shopping_cart_link").click();
+    }
 }

@@ -8,20 +8,16 @@ import net.serenitybdd.screenplay.ui.Button;
 
 
 import net.serenitybdd.screenplay.ui.PageElement;
+import org.openqa.selenium.By;
 
 
 public class InventoryActions extends UIInteractionSteps {
 
     @Step("Add '{0}' to the cart")
     public void addToCart(String item) {
-        find(Button.withText("Add to cart").inside(inventoryItemWithName(item))).click();
+       find(("#add-to-cart-sauce-labs-backpack"));
+       find(Button.withText("Add to cart")).click();
     }
-
-    private SearchableTarget inventoryItemWithName(String item) {
-        return PageElement.locatedBy("inventory_item").containingText(item);
-    }
-
-
 
 }
 

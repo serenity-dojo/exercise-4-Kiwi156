@@ -4,6 +4,9 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import swaglabs.actions.catalog.InventoryActions;
+import swaglabs.actions.checkout.CartActions;
+import swaglabs.actions.navigate.NavigateActions;
 import swaglabs.model.CheckoutItem;
 import swaglabs.model.TotalItemPrice;
 
@@ -12,6 +15,11 @@ import java.util.Map;
 
 public class CheckoutStepDefinitions {
 
+    InventoryActions inventoryActions;
+
+    NavigateActions navigate;
+
+    CartActions cartActions;
     /**
      * The present tense tells us this is something Colin is doing now
      */
@@ -25,7 +33,9 @@ public class CheckoutStepDefinitions {
      */
     @Given("Colin/he has selected an item and checked out his cart")
     public void colinHasCheckedOutHisCart() {
-        // TODO: Implement me
+        inventoryActions.addToCart("Sauce Labs Backpack");
+        navigate.toTheShoppingCart();
+        cartActions.startCheckout();
     }
 
     /**

@@ -12,6 +12,7 @@ import net.serenitybdd.core.steps.UIInteractions;
 import swaglabs.actions.catalog.CatalogItems;
 import swaglabs.actions.catalog.InventoryActions;
 
+import swaglabs.actions.checkout.CheckoutActions;
 import swaglabs.model.CustomerDetails;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class CartStepDefinitions extends UIInteractions {
     @Steps
     InventoryActions inventoryActions;
 
-
+    CheckoutActions checkout;
     @Steps
     CatalogItems catalog;
 
@@ -37,7 +38,6 @@ public class CartStepDefinitions extends UIInteractions {
     public void colinAddsToTheCart(List<String> items) {
         for (String item : items) {
             inventoryActions.addToCart(item);
-            System.out.println("Items" + item);
         }
     }
 
@@ -111,7 +111,7 @@ public class CartStepDefinitions extends UIInteractions {
 
     @When("Colin/he provides the following personal details:")
     public void heProvidesTheFollowingDetails(CustomerDetails customerDetails) {
-        // TODO: Implement me
+        checkout.enterCustomerDetails(customerDetails);
     }
 }
 

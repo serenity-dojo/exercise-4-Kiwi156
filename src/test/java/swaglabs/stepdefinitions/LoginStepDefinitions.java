@@ -53,7 +53,8 @@ public class LoginStepDefinitions {
      */
     @Given("Colin/he has logged onto the application")
     public void aRegisteredUser() {
-        // TODO: Implement me
+        login.openTheLoginPage();
+        login.withValidCredentials();
     }
 
     @When("Colin/he attempts to login with the following credentials:")
