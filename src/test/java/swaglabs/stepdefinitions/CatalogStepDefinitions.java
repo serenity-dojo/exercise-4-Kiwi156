@@ -1,7 +1,7 @@
 package swaglabs.stepdefinitions;
 
 import io.cucumber.java.en.When;
-import net.thucydides.core.annotations.Steps;
+import net.serenitybdd.annotations.Steps;
 import swaglabs.actions.catalog.InventoryActions;
 import swaglabs.actions.navigation.NavigateActions;
 

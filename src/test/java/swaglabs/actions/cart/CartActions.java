@@ -4,7 +4,7 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.serenitybdd.screenplay.targets.SearchableTarget;
 import net.serenitybdd.screenplay.ui.Button;
 import net.serenitybdd.screenplay.ui.PageElement;
-import net.thucydides.core.annotations.Step;
+import net.serenitybdd.annotations.Step;
 
 public class CartActions extends UIInteractionSteps {
 

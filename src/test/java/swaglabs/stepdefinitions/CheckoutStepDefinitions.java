@@ -4,7 +4,7 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.thucydides.core.annotations.Steps;
+import net.serenitybdd.annotations.Steps;
 import swaglabs.actions.cart.CartActions;
 import swaglabs.actions.cart.CartItems;
 import swaglabs.actions.cart.CheckoutActions;

@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.targets.SearchableTarget;
 import net.serenitybdd.screenplay.ui.Button;
 import net.serenitybdd.screenplay.ui.Link;
 import net.serenitybdd.screenplay.ui.PageElement;
-import net.thucydides.core.annotations.Step;
+import net.serenitybdd.annotations.Step;
 
 public class ProductDetailsActions extends UIInteractionSteps {
 
