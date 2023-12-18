@@ -9,14 +9,19 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.core.steps.UIInteractions;
+import swaglabs.actions.cart.CartActions;
+import swaglabs.actions.cart.CartItems;
 import swaglabs.actions.catalog.CatalogItems;
 import swaglabs.actions.catalog.InventoryActions;
 
-import swaglabs.actions.checkout.CheckoutActions;
+import swaglabs.actions.cart.CheckoutActions;
+import swaglabs.actions.catalog.ProductDetailsActions;
+import swaglabs.actions.navigate.NavigateActions;
 import swaglabs.model.CustomerDetails;
 
 import java.util.List;
 import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -25,15 +30,34 @@ public class CartStepDefinitions extends UIInteractions {
     @Steps
     InventoryActions inventoryActions;
 
-    CheckoutActions checkout;
+    @Steps
+    CartActions cartActions;
+
+
+    CartItems cart;
+
+    @Steps
+    ProductDetailsActions productDetails;
+
     @Steps
     CatalogItems catalog;
+
+    @Steps
+    NavigateActions navigate;
+
+    @Steps
+    CheckoutActions checkout;
+
 
     /**
      * Add an item on the catalog page to the cart
      */
+ //   @When("Colin/he adds {string} to the cart")
+   // public void colinAddsToTheCart(String item) {
+     //   inventoryActions.addToCart(item);
+   // }
 
-
+    @Given("Colin/he has the following item(s) in his/her cart:")
     @When("Colin adds the following items to the cart: {items}")
     public void colinAddsToTheCart(List<String> items) {
         for (String item : items) {
@@ -46,16 +70,21 @@ public class CartStepDefinitions extends UIInteractions {
         return Splitter.on(",").trimResults().splitToList(itemList);
     }
 
+    @When("Colin/he adds this item to the cart")
+    public void colinAddsTheCurrentItemTheCart() {
+        productDetails.addToCart();
+    }
+
     @Then("the cart item count should be {int}")
     public void theCartItemCountShouldBe(int itemCount) {
 
         assertThat(catalog.shoppingCartBadge()).contains(Integer.toString(itemCount));
     }
 
-    @And("Colin/he has the following item(s) in his/her cart:")
-    public void addedTheFollowingItemsToTheCart(List<String> items) {
-        // TODO: Implement me
-    }
+ //   @And("Colin/he has the following item(s) in his/her cart:")
+   // public void addedTheFollowingItemsToTheCart(List<String> items) {
+    //    // TODO: Implement me
+   // }
 
     @And("Colin/he has no items in his/her cart")
     public void addedTheFollowingItemsToTheCart() {
@@ -70,12 +99,14 @@ public class CartStepDefinitions extends UIInteractions {
 
     @When("Colin/he removes {string} from the cart")
     public void heRemovesFromTheCart(String item) {
-        // TODO: Implement me
+        {
+            cartActions.removeFromCartSummary(item);
+        }
     }
 
     @When("Colin/he removes {string} from the cart summary")
     public void heRemovesFromTheCartSummary(String item) {
-        // TODO: Implement me
+        inventoryActions.removeFromCart(item);
     }
 
     /**
@@ -84,34 +115,32 @@ public class CartStepDefinitions extends UIInteractions {
     @Given("Colin/he has opened the shopping cart")
     @Given("Colin/he views his shopping cart")
     @When("Colin/he opens the shopping cart")
-    public void opensCart() {
-        // TODO: Implement me
+    public void opensCartPage() {navigate.toTheShoppingCart();}
+
+    @When("Colin/he review his order")
+    public void reviewOrder(){
+            navigate.toTheShoppingCart();
+            cartActions.startCheckout();
+            checkout.enterCustomerDetails(CustomerDetails.about("Colin"));
     }
+     @When("Colin/he continues shopping")
+     public void continuesShopping() {
+            navigate.toTheShoppingCart();
+            cartActions.startCheckout();
+            checkout.enterCustomerDetails(CustomerDetails.about("Colin"));
+        }
+        @Then("Colin/he should see the following items:")
+        public void shouldSeeTheFollowingItems(List<String> expectedOutput) {
+            assertThat(cart.itemNames()).containsExactlyElementsOf(expectedOutput);
+        }
 
-    @When("Colin/he reviews his order")
-    public void reviewOrder() {
+        @DataTableType
+        public CustomerDetails customer(Map<String, String> customer) {
+            return new CustomerDetails(customer.get("First Name"), customer.get("Last Name"), customer.get("Zip/Post Code"));
+        }
 
-    }
-
-    @When("Colin/he continues shopping")
-    public void continuesShopping() {
-        // TODO: Implement me
-    }
-
-
-    @Then("Colin/he should see the following items:")
-    public void shouldSeeTheFollowingItems(List<String> expectedItems) {
-        // TODO: Implement me
-    }
-
-    @DataTableType
-    public CustomerDetails customer(Map<String, String> customer) {
-        return new CustomerDetails(customer.get("First Name"), customer.get("Last Name"), customer.get("Zip/Post Code"));
-    }
-
-    @When("Colin/he provides the following personal details:")
-    public void heProvidesTheFollowingDetails(CustomerDetails customerDetails) {
-        checkout.enterCustomerDetails(customerDetails);
-    }
+        @When("Colin/he provides the following personal details:")
+        public void heProvidesTheFollowingDetails(CustomerDetails customerDetails) {
+            checkout.enterCustomerDetails(customerDetails);
+        }
 }
-

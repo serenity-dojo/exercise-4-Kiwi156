@@ -1,4 +1,4 @@
-package swaglabs.actions.checkout;
+package swaglabs.actions.cart;
 
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.core.steps.UIInteractions;
@@ -22,4 +22,9 @@ public class CheckoutActions extends UIInteractions {
             }
             $(Button.withText("Continue")).click();
         }
+    @Step("Confirm the order")
+    public void confirmOrder() {
+        $(Button.withText("Finish")).click();
+    }
+
 }

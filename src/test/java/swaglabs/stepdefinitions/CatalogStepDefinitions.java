@@ -11,6 +11,8 @@ public class CatalogStepDefinitions {
     @Steps
     NavigateActions navigate;
 
+    @Steps
+    InventoryActions inventoryActions;
 
     @When("Colin/he is browsing the product catalog")
     public void browsingTheCatalog() {
@@ -18,7 +20,8 @@ public class CatalogStepDefinitions {
     }
 
     @When("Colin/he has opened the product details for {string}")
-    public void opensProductDetails(String productName) {
-        // TODO: Implement me
+    public void opensProductDetails(String productName)  {
+        inventoryActions.viewDetailsFor(productName);
     }
+
 }
