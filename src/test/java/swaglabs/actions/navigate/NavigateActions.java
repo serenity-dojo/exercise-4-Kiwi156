@@ -15,6 +15,6 @@ public class NavigateActions extends UIInteractions {
 
 
     public void toTheShoppingCart() {
-        find(By.id("#shopping_cart_container.shopping_cart_container")).click();
+        $(".shopping_cart_link").click();
     }
 }

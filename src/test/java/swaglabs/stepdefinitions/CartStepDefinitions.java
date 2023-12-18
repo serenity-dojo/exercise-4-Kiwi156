@@ -34,7 +34,7 @@ public class CartStepDefinitions extends UIInteractions {
     CartActions cartActions;
 
 
-    CartItems cart;
+    CartItems cartItems;
 
     @Steps
     ProductDetailsActions productDetails;
@@ -99,14 +99,11 @@ public class CartStepDefinitions extends UIInteractions {
 
     @When("Colin/he removes {string} from the cart")
     public void heRemovesFromTheCart(String item) {
-        {
-            cartActions.removeFromCartSummary(item);
-        }
+        inventoryActions.removeFromCart(item);
     }
-
     @When("Colin/he removes {string} from the cart summary")
     public void heRemovesFromTheCartSummary(String item) {
-        inventoryActions.removeFromCart(item);
+        cartActions.removeFromCartSummary(item);
     }
 
     /**
@@ -130,8 +127,8 @@ public class CartStepDefinitions extends UIInteractions {
             checkout.enterCustomerDetails(CustomerDetails.about("Colin"));
         }
         @Then("Colin/he should see the following items:")
-        public void shouldSeeTheFollowingItems(List<String> expectedOutput) {
-            assertThat(cart.itemNames()).containsExactlyElementsOf(expectedOutput);
+        public void shouldSeeTheFollowingItems(List<String> expectedItems) {
+            assertThat(cartItems.itemNames()).containsExactlyElementsOf(expectedItems);
         }
 
         @DataTableType
