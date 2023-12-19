@@ -5,6 +5,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
+import net.serenitybdd.core.steps.UIInteractions;
+import net.serenitybdd.screenplay.actions.OpenUrl;
+import net.serenitybdd.screenplay.ui.Button;
+import org.openqa.selenium.By;
 import swaglabs.actions.cart.CartItems;
 import swaglabs.actions.cart.CheckoutActions;
 import swaglabs.actions.catalog.InventoryActions;
@@ -19,18 +23,24 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CheckoutStepDefinitions {
+public class CheckoutStepDefinitions extends UIInteractions {
 
+
+    @Steps
     NavigateActions navigateActions;
 
+    @Steps
     InventoryActions inventoryActions;
+    @Steps
     CartActions cartActions;
 
     @Steps
     CheckoutActions checkout;
 
-    CartItems cart;
+    @Steps
+    CartItems cartItems;
 
+    @Steps
     ConfirmationPage confirmationPage;
     /**
      * The present tense tells us this is something Colin is doing now
@@ -45,20 +55,19 @@ public class CheckoutStepDefinitions {
      */
     @Given("Colin/he has selected an item and checked out his cart")
     public void colinHasCheckedOutHisCart() {
-        inventoryActions.addToCart("Sauce Labs Backpack");
-       navigateActions.toTheShoppingCart();
-       cartActions.startCheckout();
+        inventoryActions.selectedAnItem();
+        navigateActions.toTheShoppingCart();
+        cartActions.startCheckout();
     }
 
     /**
-     * Open the cart page and enter customer personal details
+     * Open the checkout page and enter customer personal details
      */
     @When("Colin/he checks out his cart providing his personal details")
     public void checksOutWithPersonalDetails() {
         navigateActions.toTheShoppingCart();
         cartActions.startCheckout();
         checkout.enterCustomerDetails(CustomerDetails.about("Colin"));
-
     }
 
     @When("Colin/he checks out the following items:")
@@ -74,7 +83,6 @@ public class CheckoutStepDefinitions {
     @Then("Colin/he should be informed {string}")
     public void shouldBeInformedThat(String message) {
         assertThat(confirmationPage.thankYouMessage()).contains(message);
-
     }
 
     @DataTableType
@@ -95,15 +103,15 @@ public class CheckoutStepDefinitions {
 
     @Then("Colin/he should be presented with a summary of his purchase including:")
     public void presentSummaryOfPurchases(List<CheckoutItem> expectedItems) {
-        assertThat(cart.items()).containsExactlyElementsOf(expectedItems);
+        assertThat(cartItems.items()).containsExactlyElementsOf(expectedItems);
     }
 
     /**
-     * Check the total price details displayed on the cart confirmation page
+     * Check the total price details displayed on the checkout confirmation page
      */
     @Then("the total price should be:")
     public void totalPriceShouldBe(TotalItemPrice expectedPrice) {
-        assertThat(cart.totalItemPrice()).isEqualTo(expectedPrice);
+        assertThat(cartItems.totalItemPrice()).isEqualTo(expectedPrice);
     }
 }
 

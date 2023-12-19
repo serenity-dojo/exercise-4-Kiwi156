@@ -16,8 +16,7 @@ public class InventoryActions extends UIInteractionSteps {
 
     @Step("Add '{0}' to the cart")
     public void addToCart(String item) {
-        find(("#add-to-cart-sauce-labs-backpack"));
-        find(Button.withText("Add to cart")).click();
+        find(Button.withText("Add to cart").inside(inventoryItemWithName(item))).click();
     }
 
     private SearchableTarget inventoryItemWithName(String item) {
@@ -32,5 +31,9 @@ public class InventoryActions extends UIInteractionSteps {
     @Step("Remove '{0}' from the cart")
     public void removeFromCart(String item) {
         find(Button.withText("Remove").inside(inventoryItemWithName(item))).click();
+    }
+
+    public void selectedAnItem() {
+        find(By.id("add-to-cart-sauce-labs-backpack")).click();
     }
 }

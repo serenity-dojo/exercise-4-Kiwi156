@@ -37,26 +37,30 @@ public class CartStepDefinitions extends UIInteractions {
     CartItems cartItems;
 
     @Steps
-    ProductDetailsActions productDetails;
+    ProductDetailsActions productDetailsActions;
 
     @Steps
-    CatalogItems catalog;
+    CatalogItems catalogItems;
 
     @Steps
-    NavigateActions navigate;
+    NavigateActions navigateActions;
 
     @Steps
-    CheckoutActions checkout;
+    CheckoutActions checkoutActions;
 
 
     /**
      * Add an item on the catalog page to the cart
      */
- //   @When("Colin/he adds {string} to the cart")
-   // public void colinAddsToTheCart(String item) {
-     //   inventoryActions.addToCart(item);
-   // }
+    @When("Colin/he adds {string} to the cart")
+    public void colinAddsToTheCart(String item) {
+        inventoryActions.addToCart(item);
+    }
 
+    @ParameterType(".*")
+    public List<String> items(String itemList) {
+        return Splitter.on(",").trimResults().splitToList(itemList);
+    }
     @Given("Colin/he has the following item(s) in his/her cart:")
     @When("Colin adds the following items to the cart: {items}")
     public void colinAddsToTheCart(List<String> items) {
@@ -65,20 +69,15 @@ public class CartStepDefinitions extends UIInteractions {
         }
     }
 
-    @ParameterType(".*")
-    public List<String> items(String itemList) {
-        return Splitter.on(",").trimResults().splitToList(itemList);
-    }
 
     @When("Colin/he adds this item to the cart")
     public void colinAddsTheCurrentItemTheCart() {
-        productDetails.addToCart();
+        productDetailsActions.addToCart();
     }
 
     @Then("the cart item count should be {int}")
     public void theCartItemCountShouldBe(int itemCount) {
-
-        assertThat(catalog.shoppingCartBadge()).contains(Integer.toString(itemCount));
+        assertThat(catalogItems.shoppingCartBadge()).contains(Integer.toString(itemCount));
     }
 
  //   @And("Colin/he has the following item(s) in his/her cart:")
@@ -99,8 +98,8 @@ public class CartStepDefinitions extends UIInteractions {
 
     @When("Colin/he removes {string} from the cart")
     public void heRemovesFromTheCart(String item) {
-        inventoryActions.removeFromCart(item);
-    }
+      inventoryActions.removeFromCart(item);
+   }
     @When("Colin/he removes {string} from the cart summary")
     public void heRemovesFromTheCartSummary(String item) {
         cartActions.removeFromCartSummary(item);
@@ -112,19 +111,20 @@ public class CartStepDefinitions extends UIInteractions {
     @Given("Colin/he has opened the shopping cart")
     @Given("Colin/he views his shopping cart")
     @When("Colin/he opens the shopping cart")
-    public void opensCartPage() {navigate.toTheShoppingCart();}
+    public void opensCartPage() {
+        navigateActions.toTheShoppingCart();}
 
     @When("Colin/he review his order")
     public void reviewOrder(){
-            navigate.toTheShoppingCart();
-            cartActions.startCheckout();
-            checkout.enterCustomerDetails(CustomerDetails.about("Colin"));
+        navigateActions.toTheShoppingCart();
+        cartActions.startCheckout();
+        checkoutActions.enterCustomerDetails(CustomerDetails.about("Colin"));
     }
      @When("Colin/he continues shopping")
      public void continuesShopping() {
-            navigate.toTheShoppingCart();
+            navigateActions.toTheShoppingCart();
             cartActions.startCheckout();
-            checkout.enterCustomerDetails(CustomerDetails.about("Colin"));
+            checkoutActions.enterCustomerDetails(CustomerDetails.about("Colin"));
         }
         @Then("Colin/he should see the following items:")
         public void shouldSeeTheFollowingItems(List<String> expectedItems) {
@@ -138,6 +138,6 @@ public class CartStepDefinitions extends UIInteractions {
 
         @When("Colin/he provides the following personal details:")
         public void heProvidesTheFollowingDetails(CustomerDetails customerDetails) {
-            checkout.enterCustomerDetails(customerDetails);
+            checkoutActions.enterCustomerDetails(customerDetails);
         }
 }

@@ -17,4 +17,6 @@ public class NavigateActions extends UIInteractions {
     public void toTheShoppingCart() {
         $(".shopping_cart_link").click();
     }
+
+
 }

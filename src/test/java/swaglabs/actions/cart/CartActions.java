@@ -26,13 +26,14 @@ public class CartActions extends UIInteractions {
     }
 
 
-    @Step("Start the cart")
+    @Step("Start the checkout")
     public void startCheckout() {
         $(Button.withText("Checkout")).click();
-    }
 
+    }
     private SearchableTarget cartItemWithName(String item) {
         return PageElement.locatedBy(".cart_item").containingText(item);
+
     }
 }
 

@@ -8,7 +8,7 @@ Feature: Completing a purchase
 
     Scenario Outline: Colin enters incomplete name and address info
       Given Colin is browsing the product catalog
-      And Colin has selected an item and checked out his cart
+      And  Colin has selected an item and checked out his cart
       When he provides the following personal details:
         | First Name   | Last Name   | Zip/Post Code   |
         | <First Name> | <Last Name> | <Zip/Post Code> |
