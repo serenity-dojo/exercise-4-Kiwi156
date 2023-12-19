@@ -114,7 +114,7 @@ public class CartStepDefinitions extends UIInteractions {
     public void opensCartPage() {
         navigateActions.toTheShoppingCart();}
 
-    @When("Colin/he review his order")
+    @When("Colin/he reviews his order")
     public void reviewOrder(){
         navigateActions.toTheShoppingCart();
         cartActions.startCheckout();
