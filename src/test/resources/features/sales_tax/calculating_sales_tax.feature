@@ -1,4 +1,4 @@
-@pending
+
 Feature: Calculating sales tax
 
   Background:
@@ -7,7 +7,7 @@ Feature: Calculating sales tax
   Rule: Sales tax is calculated as 8% of the purchase price
     Scenario Outline: Colin sees the correctly calculated sales tax for his order
       Given Colin has the following item in his cart:
-        | <Item> |
+        |<Item>|
       When he reviews his order
       Then the total price should be:
         | Item total | Tax   | Total   |
