@@ -58,6 +58,7 @@ public class CheckoutStepDefinitions extends UIInteractions {
         inventoryActions.selectedAnItem();
         navigateActions.toTheShoppingCart();
         cartActions.startCheckout();
+        // }
     }
 
     /**
