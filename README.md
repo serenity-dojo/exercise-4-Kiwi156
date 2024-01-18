@@ -1,3 +1,9 @@
-# Serenity Dojo - BDD with Cucumber and Java - Exercise 4
+# BDD with Cucumber and Java - Exercise.
 
-## Exercise 1 - Implement the login feature
+In this exercise we use gherkin scenarios for:
+        +Login
+        +Managing a shop
+        +Completing a purchase
+        +Calculating sales Tax
+
+The web application is a test site https://www.saucedemo.com/.
