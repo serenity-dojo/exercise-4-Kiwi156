@@ -1,5 +1,5 @@
 
-Feature: Managing the cart
+Feature: Managinggit  cart
 
   Background:
     Given Colin has logged onto the application
