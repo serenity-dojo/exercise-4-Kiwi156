@@ -8,7 +8,7 @@ The web application for this exercise was a test site https://www.saucedemo.com/
 
 # Goal 
 
-The goal of the exercise was to create an executable specification by implementing the Java code to implement the gherkin scenarios in the following features.
+The goal of the exercise was to create an executable specification by implementing the Java code for the gherkin scenarios within the following features.
 
 ![image](https://github.com/serenity-dojo/exercise-4-Kiwi156/assets/73317499/be4d7e8e-b26b-417b-9a93-ad269fb21142)
 
