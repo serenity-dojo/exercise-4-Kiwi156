@@ -6,6 +6,13 @@ Within the test location there are Step Definitions Classes, Actions Classes and
 
 The web application for this exercise was a test site https://www.saucedemo.com/. On the test website items can be purchased using a shopping cart and user credentials need to be used to log on.   
 
+# Goal 
+
+The goal of the exercise was to create an executable specification by implementing the Java code to implement the gherkin scenarios in the following features.
+
+![image](https://github.com/serenity-dojo/exercise-4-Kiwi156/assets/73317499/be4d7e8e-b26b-417b-9a93-ad269fb21142)
+
+
 # Techniques Learned
 
 When running the tests to Implement BDD Scenarios I encountered a "net.thucydides.core.webdriver.DriverConfigurationError: Could not instantiate class org.openqa.selenium.chrome.ChromeDriver" error message. The Serenity version needed to be updated in the Pom.xml. Here are the related configuration changes I made to resolve this error message. https://github.com/serenity-dojo/exercise-4-Kiwi156/commit/2dd1672eb4b3e3d1d6af46a465e76c10192f0d6b.
