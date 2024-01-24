@@ -2,7 +2,7 @@
 
 In this exercise we use gherkin scenarios with concise examples to describe the business rules and the scenario outlines. The scenarios contain concreate outcomes that can be checked automatically. They can be found under the test then features location. 
 
-Within the test location there are Step Definitions Classes, Actions Classes and Cucumber Test suite Classes. The Step Definitions, have the Java code that run the scenarios and checks the outcomes. The Actions have the Java code for the different Actions Classes for the different components for example LoginActions or CartActions. There is a Cucumber Test suite Class for executing the tests. 
+Within the test location there are also Step Definitions Classes, Actions Classes and Cucumber Test suite Classes. The Step Definitions, have the Java code that run the scenarios and checks the outcomes. The Actions have the Java code for the different Actions Classes for the different components for example LoginActions or CartActions. There is a Cucumber Test suite Class for executing the tests. 
 
 The web application for this exercise was a test site https://www.saucedemo.com/. On the test website items can be purchased using a shopping cart and user credentials need to be used to log on.   
 
