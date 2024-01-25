@@ -17,7 +17,7 @@ The goal of the exercise was to create an executable specification by implementi
 
 When running the tests to Implement BDD Scenarios I encountered a "net.thucydides.core.webdriver.DriverConfigurationError: Could not instantiate class org.openqa.selenium.chrome.ChromeDriver" error message. The Serenity version needed to be updated in the Pom.xml. Here are the related configuration changes I made to resolve this error message. https://github.com/serenity-dojo/exercise-4-Kiwi156/commit/2dd1672eb4b3e3d1d6af46a465e76c10192f0d6b.
 
-When working on this exercise I learnt to run Cucumber tests from the Cucumber Test Suite Class or command line to the details of the test execution results rather than the feature file. 
+When working on this exercise I learnt to run Cucumber tests from the Cucumber Test Suite Class or command line to see the details of the test results rather than the feature file. 
 
 I also learnt to "Ctrl + Click" with a cursor over a Class or method etc. to jump to the relevant details. "Ctrl + Click" is not just for navigating from feature files to the related step definitions I can also use it to locate all the references of when an item is used in the Java code.
 
