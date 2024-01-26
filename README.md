@@ -4,7 +4,7 @@ In this exercise we use **gherkin scenarios** with concise examples to describe 
 
 Within the test location there are also **Step Definitions Classes**, **Actions Classes** and **Cucumber Test suite Classes**. The Step Definitions, have the Java code that run the scenarios and checks the outcomes. Every line of a gherkin scenario relates to a method in the Java code and is also called clue code. The Actions have the Java code for the different Actions Classes for the different components for example LoginActions or CartActions. There is a Cucumber Test suite Class for executing the tests. 
 
-The web application for this exercise was a test site https://www.saucedemo.com/. On the test website items can be purchased using a shopping cart and user credentials need to be used to log on.   
+The web application for this exercise was a test site https://www.saucedemo.com/ with multiple pages. On the test website items can be purchased using a shopping cart and user credentials need to be used to log on. This exercise also demonstrated **web browser automation** and has examples of **finding element locators** and interacting with different types of elements like buttons, links and input fields.   
 
 # Goal 
 
